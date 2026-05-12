@@ -80,10 +80,25 @@
     </div>
 
     <div class="stat">
+      <div class="stat-label">Tiempo de búsqueda</div>
+      <div class="stat-val" id="s-time">—</div>
+    </div>
+
+    <div class="stat">
       <div class="stat-label">¿Óptimo?</div>
       <div class="stat-val" id="s-opt">—</div>
     </div>
 
+  </div>
+
+  <div id="complexity">
+    <h2>Complejidad del algoritmo</h2>
+    <p>
+      A* usa el costo real <code>g(n)</code> y la heurística <code>h(n)</code>.
+      Con <code>w = 1</code> y una heurística admisible, busca un camino óptimo.
+      Al aumentar <code>w</code>, la búsqueda explora menos pero puede dejar de ser óptima.
+      El tiempo y los nodos explorados muestran la complejidad práctica en este mapa.
+    </p>
   </div>
 
   <div id="legend">
