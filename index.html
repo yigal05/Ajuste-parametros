@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explorador A* — Ajuste de Parámetros de Exploración</title>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <h1>Explorador A* — Ajuste de Parámetros de Exploración</h1>
+
+  <p class="sub">
+    Modifica el peso <strong>w</strong> para ver cómo cambia la exploración del espacio de búsqueda.
+  </p>
+
+  <div id="controls">
+
+    <div class="ctrl-group">
+      <span class="ctrl-label">
+        Peso de heurística (w) — f(n) = g(n) + w·h(n)
+      </span>
+
+      <input
+        type="range"
+        min="0"
+        max="5"
+        step="0.1"
+        value="1"
+        id="w-slider"
+        oninput="onW(this.value)"
+      >
+
+      <span class="ctrl-val" id="w-val">
+        w = 1.0 → A* estándar
+      </span>
+    </div>
+
+    <div class="ctrl-group">
+      <span class="ctrl-label">
+        Velocidad de animación
+      </span>
+
+      <input
+        type="range"
+        min="10"
+        max="200"
+        step="10"
+        value="60"
+        id="spd-slider"
+        oninput="animDelay=220-+this.value"
+      >
+    </div>
+
+    <div style="display:flex; gap:8px;">
+      <button onclick="runSearch()">▶ Buscar</button>
+      <button onclick="resetGrid()">↺ Nuevo mapa</button>
+    </div>
+
+  </div>
+
+  <canvas id="c"></canvas>
+
+  <div id="stats">
+
+    <div class="stat">
+      <div class="stat-label">Nodos explorados</div>
+      <div class="stat-val" id="s-explored">—</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-label">Longitud del camino</div>
+      <div class="stat-val" id="s-path">—</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-label">Costo total</div>
+      <div class="stat-val" id="s-cost">—</div>
+    </div>
+
+    <div class="stat">
+      <div class="stat-label">¿Óptimo?</div>
+      <div class="stat-val" id="s-opt">—</div>
+    </div>
+
+  </div>
+
+  <div id="legend">
+
+    <div class="leg">
+      <div class="leg-sq" style="background:#4ADE80"></div>
+      Inicio
+    </div>
+
+    <div class="leg">
+      <div class="leg-sq" style="background:#F87171"></div>
+      Meta
+    </div>
+
+    <div class="leg">
+      <div class="leg-sq" style="background:#374151"></div>
+      Pared
+    </div>
+
+    <div class="leg">
+      <div class="leg-sq" style="background:#93C5FD"></div>
+      Explorado
+    </div>
+
+    <div class="leg">
+      <div class="leg-sq" style="background:#FDE68A"></div>
+      Camino encontrado
+    </div>
+
+    <div class="leg">
+      <div class="leg-sq" style="background:#C4B5FD"></div>
+      Cola abierta
+    </div>
+
+    <span id="hint">
+      Haz clic en la cuadrícula para añadir/quitar paredes
+    </span>
+
+  </div>
+
+  <script src="scripts.js"></script>
+
+</body>
+</html>
