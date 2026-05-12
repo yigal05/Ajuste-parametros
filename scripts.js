@@ -361,7 +361,7 @@ function onW(v) {
   }
 
   else {
-    label += ' → Muy greedy';
+    label += ' → prioriza la meta';
   }
 
   document.getElementById('w-val').textContent =
