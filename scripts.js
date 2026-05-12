@@ -173,6 +173,7 @@ async function runSearch() {
     's-explored',
     's-path',
     's-cost',
+    's-time',
     's-opt'
   ].forEach(id => {
     document.getElementById(id).textContent = '…';
@@ -197,6 +198,8 @@ async function runSearch() {
   });
 
   frontierSet.add(sk);
+
+  const startTime = performance.now();
 
   let steps = 0;
 
@@ -240,6 +243,9 @@ async function runSearch() {
 
       document.getElementById('s-cost').textContent =
         cost;
+
+      document.getElementById('s-time').textContent =
+        `${Math.round(performance.now() - startTime)} ms`;
 
       document.getElementById('s-opt').textContent =
         w <= 1
@@ -324,6 +330,9 @@ async function runSearch() {
   document.getElementById('s-cost').textContent =
     '—';
 
+  document.getElementById('s-time').textContent =
+    `${Math.round(performance.now() - startTime)} ms`;
+
   document.getElementById('s-opt').textContent =
     '—';
 
@@ -352,7 +361,7 @@ function onW(v) {
   }
 
   else {
-    label += ' → Prioriza la meta';
+    label += ' → Muy greedy';
   }
 
   document.getElementById('w-val').textContent =
@@ -367,6 +376,7 @@ function resetGrid() {
     's-explored',
     's-path',
     's-cost',
+    's-time',
     's-opt'
   ].forEach(id => {
     document.getElementById(id).textContent = '—';
